@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package protobuf;
+
+message Wallet{
+
+    bool isCandidate =1;
+    repeated int64 podfHeights = 2;
+    uint64 votePower = 3;
+    string address =4;
+    uint64 nonce = 5;
+    map<string,int32> Voted = 6;
+    int32 voteLeft = 7;
+    int64 balance = 8;
+    int64 blockReward = 9;
+    int64 proofReward = 10;
+    int64 rollBackAmount = 11;
+    int64 transactionFee = 12;
+    int64 bannedTill = 13;
+//    uint64 postNonce = 14;
+}
+
+message ProofEntry{
+    string dealHash = 1;
+    repeated int64 timeStamps = 2;
+}
+
+message WalletStates{
+    repeated Wallet Wallets = 1;
+    repeated ProofEntry ProofTimes = 2;
+}

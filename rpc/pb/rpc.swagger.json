@@ -1,0 +1,1177 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "rpc.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/AccountViaUsername": {
+      "post": {
+        "operationId": "GetAccountViaUsername",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbAccount"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbGetAccountViaUsernameReq"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/AllAccountVotes": {
+      "get": {
+        "operationId": "ListVotes",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbAllAccountVotes"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/CurrentMiners": {
+      "get": {
+        "operationId": "GetCurrentMiners",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbMiners"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/CurrentRound": {
+      "get": {
+        "operationId": "GetCurrentRound",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbCurrentRound"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/DoUnVote": {
+      "post": {
+        "operationId": "DoUnVote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbTxResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbVoteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/DoVote": {
+      "post": {
+        "operationId": "DoVote",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbTxResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbVoteRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/GetStorageProviderStats": {
+      "get": {
+        "operationId": "GetStorageProviderStats",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbStorageProviderStats"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/LikeAPost": {
+      "post": {
+        "operationId": "LikePost",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbLikeAPostResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbLikeAPostRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/Login": {
+      "post": {
+        "operationId": "Login",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbLoginResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbLoginRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/MinersByRound": {
+      "get": {
+        "operationId": "GetMinersByRound",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbMinersByRound"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/Post": {
+      "post": {
+        "operationId": "SendPost",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbPostHash"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbSendPostRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/PostViaIndexer": {
+      "post": {
+        "operationId": "SendPostViaIndexer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbPostHash"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbSendPostRequestViaIndexer"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/Register": {
+      "post": {
+        "summary": "These are for login/register via indexer",
+        "operationId": "Register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbRegisterResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbRegisterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/RegisterDelegate": {
+      "post": {
+        "operationId": "RegisterDelegate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbTxResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbNonParamRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/Role": {
+      "post": {
+        "operationId": "ChangeRole",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbChangeRoleResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbChangeRoleRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/SendStorageOffer": {
+      "post": {
+        "operationId": "SendStorageOffer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbSendStorageOfferResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbSendStorageOfferRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/StartMinerCmd": {
+      "post": {
+        "operationId": "StartMiner",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbEmpty"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbNonParamRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/StartSpCmd": {
+      "post": {
+        "operationId": "StartStorageProvider",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbEmpty"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbNonParamRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/StartUserCmd": {
+      "post": {
+        "operationId": "StartUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbEmpty"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbNonParamRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/TransferMoney": {
+      "post": {
+        "operationId": "TransferMoney",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbMoneyTransferResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbTransferMoneyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/UnRegisterDelegate": {
+      "post": {
+        "operationId": "UnRegisterDelegate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbTxResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbNonParamRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/VoteViaIndexer": {
+      "post": {
+        "operationId": "SendVoteViaIndexer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbVotes"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rpcpbSendVoteRequestViaIndexer"
+            }
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/account": {
+      "get": {
+        "operationId": "GetAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbAccount"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/allAccounts": {
+      "get": {
+        "operationId": "ListBalances",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbAllAccounts"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/block": {
+      "get": {
+        "operationId": "GetBlock",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbBlock"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "height",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/committee": {
+      "get": {
+        "operationId": "GetCommittee",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbCandidates"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/current/state": {
+      "get": {
+        "operationId": "GetState",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbState"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/thread": {
+      "get": {
+        "operationId": "GetThread",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbThread"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "threadroothash",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Api"
+        ]
+      }
+    },
+    "/v1/threads": {
+      "get": {
+        "operationId": "GetThreads",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rpcpbThreads"
+            }
+          }
+        },
+        "tags": [
+          "Api"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "rpcpbAccount": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "balance": {
+          "type": "string",
+          "format": "int64"
+        },
+        "node_type": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbAccountVotes": {
+      "type": "object",
+      "properties": {
+        "acc": {
+          "$ref": "#/definitions/rpcpbAccount"
+        },
+        "votes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rpcpbPercentVote"
+          }
+        }
+      }
+    },
+    "rpcpbAllAccountVotes": {
+      "type": "object",
+      "properties": {
+        "accountsWithVotes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rpcpbAccountVotes"
+          }
+        }
+      }
+    },
+    "rpcpbAllAccounts": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rpcpbAccount"
+          }
+        }
+      }
+    },
+    "rpcpbBlock": {
+      "type": "object",
+      "properties": {
+        "height": {
+          "type": "string",
+          "format": "int64"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "parent_hash": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "miner_public_key": {
+          "type": "string"
+        },
+        "roundNum": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbCandidates": {
+      "type": "object",
+      "properties": {
+        "candidates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rpcpbChangeRoleRequest": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbChangeRoleResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbCurrentRound": {
+      "type": "object",
+      "properties": {
+        "roundNum": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbDeal": {
+      "type": "object",
+      "properties": {
+        "dealHash": {
+          "type": "string"
+        },
+        "expiryTime": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbEmpty": {
+      "type": "object"
+    },
+    "rpcpbGetAccountViaUsernameReq": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbLikeAPostRequest": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "votes": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbLikeAPostResponse": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "votes": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbLoginRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbLoginResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbMinerByRound": {
+      "type": "object",
+      "properties": {
+        "round": {
+          "type": "string",
+          "format": "int64"
+        },
+        "miners": {
+          "$ref": "#/definitions/rpcpbMiners"
+        }
+      }
+    },
+    "rpcpbMiners": {
+      "type": "object",
+      "properties": {
+        "miners": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rpcpbMinersByRound": {
+      "type": "object",
+      "properties": {
+        "allRoundMiners": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rpcpbMinerByRound"
+          }
+        }
+      }
+    },
+    "rpcpbMoneyTransferResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbNonParamRequest": {
+      "type": "object"
+    },
+    "rpcpbPercentVote": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "percent": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "rpcpbPost": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "parentHash": {
+          "type": "string"
+        },
+        "rootThreadHash": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "likes": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbPostHash": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbRegisterRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbRegisterResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbSPost": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbSendPostRequest": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "parentPostHash": {
+          "type": "string"
+        },
+        "threadheadPostHash": {
+          "type": "string"
+        },
+        "maxCost": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "minDuration": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbSendPostRequestViaIndexer": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "parentPostHash": {
+          "type": "string"
+        },
+        "threadheadPostHash": {
+          "type": "string"
+        },
+        "maxCost": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "minDuration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbSendStorageOfferRequest": {
+      "type": "object",
+      "properties": {
+        "minPrice": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxDuration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbSendStorageOfferResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbSendVoteRequestViaIndexer": {
+      "type": "object",
+      "properties": {
+        "publicKey": {
+          "type": "string"
+        },
+        "percent": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbState": {
+      "type": "object",
+      "properties": {
+        "tail": {
+          "type": "string"
+        },
+        "height": {
+          "type": "string",
+          "format": "int64"
+        },
+        "forks": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "rpcpbStorageProviderStats": {
+      "type": "object",
+      "properties": {
+        "totalCapacity": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "committedStorage": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "usedStorage": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "chunks": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "activeDeals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rpcpbDeal"
+          }
+        },
+        "storedPosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rpcpbSPost"
+          }
+        }
+      }
+    },
+    "rpcpbThread": {
+      "type": "object",
+      "properties": {
+        "posts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rpcpbPost"
+          }
+        }
+      }
+    },
+    "rpcpbThreads": {
+      "type": "object",
+      "properties": {
+        "threads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rpcpbThread"
+          }
+        }
+      }
+    },
+    "rpcpbTransferMoneyRequest": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "rpcpbTxResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "rpcpbVoteRequest": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "percentage": {
+          "type": "string"
+        }
+      }
+    },
+    "rpcpbVotes": {
+      "type": "object",
+      "properties": {
+        "publicKey": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

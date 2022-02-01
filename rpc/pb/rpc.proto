@@ -1,0 +1,443 @@
+syntax = "proto3";
+
+package rpcpb;
+
+import "google/api/annotations.proto";
+
+// import "protobuf/block.proto";
+// import "protobuf/storage.proto";
+
+
+service Api {
+  rpc GetAccount (NonParamRequest) returns (Account) {
+    option (google.api.http) = {
+			get: "/v1/account"
+		};
+  }
+
+  rpc ListBalances (NonParamRequest) returns (AllAccounts) {
+    option (google.api.http) = {
+			get: "/v1/allAccounts"
+		};
+  }
+
+  rpc ListVotes (NonParamRequest) returns (AllAccountVotes) {
+    option (google.api.http) = {
+			get: "/v1/AllAccountVotes"
+		};
+  }
+
+  rpc GetCurrentRound (NonParamRequest) returns (CurrentRound) {
+    option (google.api.http) = {
+			get: "/v1/CurrentRound"
+		};
+  }
+  
+  rpc GetCurrentMiners (NonParamRequest) returns (Miners) {
+    option (google.api.http) = {
+			get: "/v1/CurrentMiners"
+		};
+  }
+
+  rpc GetMinersByRound (NonParamRequest) returns (MinersByRound) {
+    option (google.api.http) = {
+			get: "/v1/MinersByRound"
+		};
+  }
+
+
+  // rpc GetNBlocks (GetNBlocksRequest) returns (Blocks){
+  //   option (google.api.http) = {
+	// 		get: "/v1/nblocks"
+	// 	};
+  // }
+
+  rpc GetBlock (GetBlockRequest) returns (Block) {
+    option (google.api.http) = {
+			get: "/v1/block"
+		};
+  }
+
+  rpc GetCommittee (NonParamRequest) returns (Candidates) {
+    option (google.api.http) = {
+			get: "/v1/committee"
+		};
+  }
+
+  rpc GetThread (GetThreadRequest) returns (Thread) {
+    option (google.api.http) = {
+			get: "/v1/thread"
+		};
+  }
+
+  rpc GetThreads (NonParamRequest) returns (Threads) {
+    option (google.api.http) = {
+			get: "/v1/threads"
+		};
+  }
+
+  rpc GetState (NonParamRequest) returns (State) {
+    option (google.api.http) = {
+			get: "/v1/current/state"
+		};
+  }
+
+  rpc SendPost (SendPostRequest) returns (PostHash) {
+    option (google.api.http) = {
+			post: "/v1/Post"
+			body: "*"
+		};
+  }
+
+  rpc SendStorageOffer (SendStorageOfferRequest) returns (SendStorageOfferResponse) {
+    option (google.api.http) = {
+			post: "/v1/SendStorageOffer"
+			body: "*"
+		};
+  }
+
+  rpc SendPostViaIndexer (SendPostRequestViaIndexer) returns (PostHash) {
+    option (google.api.http) = {
+			post: "/v1/PostViaIndexer"
+			body: "*"
+		};
+  }
+
+
+  rpc SendVoteViaIndexer (SendVoteRequestViaIndexer) returns (Votes) {
+    option (google.api.http) = {
+			post: "/v1/VoteViaIndexer"
+			body: "*"
+		};
+  }
+
+  rpc TransferMoney (TransferMoneyRequest) returns (MoneyTransferResponse) {
+    option (google.api.http) = {
+			post: "/v1/TransferMoney"
+			body: "*"
+		};
+  }
+
+  rpc ChangeRole (ChangeRoleRequest) returns (ChangeRoleResponse) {
+    option (google.api.http) = {
+			post: "/v1/Role"
+			body: "*"
+		};
+  }
+
+  // These are for login/register via indexer
+  rpc Register (RegisterRequest) returns (RegisterResponse) {
+    option (google.api.http) = {
+			post: "/v1/Register"
+			body: "*"
+		};
+  }
+
+  rpc Login (LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+			post: "/v1/Login"
+			body: "*"
+		};
+  }
+
+  rpc GetAccountViaUsername (GetAccountViaUsernameReq) returns (Account) {
+    option (google.api.http) = {
+			post: "/v1/AccountViaUsername"
+			body: "*"
+		};
+  }
+
+  rpc GetStorageProviderStats (NonParamRequest) returns (StorageProviderStats){
+    option (google.api.http) = {
+			get: "/v1/GetStorageProviderStats"
+		};
+  }
+
+  rpc LikePost (LikeAPostRequest) returns (LikeAPostResponse){
+    option (google.api.http) = {
+			post: "/v1/LikeAPost"
+			body: "*"
+		};
+  }
+
+  rpc DoVote (VoteRequest) returns (TxResponse) {
+    option (google.api.http) = {
+			post: "/v1/DoVote"
+			body: "*"
+		};
+  }
+
+  rpc DoUnVote (VoteRequest) returns (TxResponse) {
+    option (google.api.http) = {
+			post: "/v1/DoUnVote"
+			body: "*"
+		};
+  }
+
+  rpc RegisterDelegate (NonParamRequest) returns (TxResponse) {
+    option (google.api.http) = {
+			post: "/v1/RegisterDelegate"
+			body: "*"
+		};
+  }
+
+  rpc UnRegisterDelegate (NonParamRequest) returns (TxResponse) {
+    option (google.api.http) = {
+			post: "/v1/UnRegisterDelegate"
+			body: "*"
+		};
+  }
+
+  rpc StartUser (NonParamRequest) returns (Empty) {
+    option (google.api.http) = {
+			post: "/v1/StartUserCmd"
+			body: "*"
+		};
+  }
+
+  rpc StartMiner (NonParamRequest) returns (Empty) {
+    option (google.api.http) = {
+			post: "/v1/StartMinerCmd"
+			body: "*"
+		};
+  }
+
+   rpc StartStorageProvider (NonParamRequest) returns (Empty) {
+    option (google.api.http) = {
+			post: "/v1/StartSpCmd"
+			body: "*"
+		};
+  }
+
+}
+
+message Account {
+  string address = 1;
+  int64 balance = 2;
+  string node_type = 3;
+}
+
+message PercentVote{
+  string address = 1;
+  int32   percent = 2;
+}
+
+message AccountVotes{
+  Account acc = 1;
+  repeated PercentVote votes =2;
+}
+
+message AllAccountVotes{
+  repeated AccountVotes accountsWithVotes = 1;
+}
+
+message AllAccounts{
+  repeated Account accounts = 1;
+}
+
+message CurrentRound{
+  int64 roundNum = 1;
+}
+
+message Miners{
+  repeated string miners = 1;
+}
+
+message MinerByRound{
+  int64 round =1;
+  Miners miners =2;
+}
+
+message MinersByRound{
+  repeated MinerByRound allRoundMiners = 1;
+}
+
+message VoteRequest{
+  string address =1;
+  string percentage = 2;
+}
+
+message TxResponse{
+  bool success = 1;
+}
+
+
+message GetNBlocksRequest {
+  int64 N = 1;
+}
+
+message GetBlockRequest {
+  string hash = 1;
+  int64 height = 2;
+}
+
+message Block {
+  int64 height = 1;
+  string hash = 2;
+  string parent_hash = 3;  
+  int64 timestamp = 4;
+  string miner_public_key = 5;
+  int64 roundNum = 6;
+}
+
+message GetThreadRequest{
+  string threadroothash=1;
+}
+
+message NonParamRequest {
+}
+
+message Candidates {
+  repeated string candidates = 1;
+}
+
+message Post{
+  string hash =1;
+  string content = 2;
+  string parentHash = 3;
+  string rootThreadHash=4;
+  int64 timestamp=5;
+  uint32 likes= 6;
+}
+
+message Thread{
+  repeated Post posts=6;
+}
+
+// message Thread{
+  // repeated protobuf.StoredPost posts = 1;
+  
+// }
+
+message Empty {
+}
+
+message Threads{
+  repeated Thread threads =1;
+}
+
+message State {
+  string tail = 1;
+  int64 height = 2;
+  int64 forks = 3;
+}
+
+
+message SendPostRequest {
+  
+  string content = 1;
+  string parentPostHash = 2;
+  string threadheadPostHash = 3;
+  uint32 maxCost = 4;
+  uint32 minDuration = 5;
+}
+
+message SendPostRequestViaIndexer{
+  string content = 1;
+  string parentPostHash = 2;
+  string threadheadPostHash = 3;
+  uint32 maxCost = 4;
+  uint32 minDuration = 5;
+  string username = 6;
+}
+
+message PostHash {
+  string hash = 1;
+}
+
+message SendVoteRequestViaIndexer{
+  string publicKey = 1;
+  string percent = 2;
+}
+
+message Votes{
+  string publicKey = 1;
+}
+
+message TransferMoneyRequest{
+  string address = 1;
+  uint64 amount = 2;
+}
+
+message MoneyTransferResponse{
+  uint32 success = 1;
+}
+
+message CandidateVoted{
+  string amount = 1;
+}
+
+message ChangeRoleRequest{
+  string role = 1;
+}
+
+message ChangeRoleResponse{
+  uint32 success = 1;
+}
+
+message RegisterRequest{
+  string username = 1;
+  string password = 2;
+}
+
+message RegisterResponse{
+  string result = 1;
+  string token = 2;
+}
+
+message LoginRequest{
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse{
+  string token = 1;
+  string error = 2;
+}
+
+message GetAccountViaUsernameReq{
+  string username = 1;
+}
+
+message LikeAPostRequest{
+  string hash=1;
+  uint32 votes =2;
+}
+message LikeAPostResponse{
+  string hash = 1;
+  uint32 votes =2;
+}
+
+message StorageProviderStats{
+  uint32 totalCapacity = 1;
+  uint32 committedStorage = 2;
+  uint32 usedStorage = 3;
+  uint32 chunks = 4;
+  repeated Deal activeDeals = 5;
+  repeated SPost storedPosts =  6;
+}
+
+
+message SPost{
+  string hash = 1;
+  uint32 size = 2;
+}
+
+message Deal{
+  string dealHash = 1;
+  int64 expiryTime = 2;
+}
+
+message SendStorageOfferRequest{
+  uint32 minPrice = 1;
+  uint32 maxDuration = 2;
+  uint32 size = 3;
+}
+
+message SendStorageOfferResponse{
+  string success = 1;
+}
+
+// message Blocks{
+//   repeated Block blocks = 1;
+// }

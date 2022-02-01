@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package protobuf;
+
+message PostMetadata {
+  bytes pid = 1; // poster ID
+  bytes content_hash = 3;
+  uint32 content_size = 4;
+  bytes thread_head_post_hash = 6; // hash of PostInfo, see below
+  bytes parent_post_hash = 7; // hash of PostInfo
+  bytes authorAddress = 8;
+//  uint64 nonce = 9;
+}
+
+message PostParameter {
+  uint32 max_cost = 1; // maximum unit price in decibels
+  //uint32 min_duration = 2; // minimum storage duration
+}
+
+message PostInfo {
+  PostMetadata metadata = 1;
+  PostParameter param = 2;
+}
+
+message SignedPostInfo {
+  PostInfo info = 1;
+  bytes sig = 2; // signed by poster
+  int64 timestamp = 3;
+  bytes TimeStampSig = 4; // signed by poster
+}
+
+message PostRequest {
+  SignedPostInfo signed_info = 1;
+  bytes content = 2;
+}
+
+// for storage Provider signature
+message ThreadSignedInfoList {
+  repeated SignedPostInfo info_list = 1;
+  repeated SignedPostInfo info_list_not_stored_post = 2;
+  bytes kadID = 3; // storage provider kadiD
+  bytes sig = 4; // signed by storage provider
+  bytes spid = 5; // TODO: discuss this it is here temporary
+}
+
+message ThreadPostRequestList {
+  repeated PostRequest list = 1;
+//  bytes content = 2;
+}
+
+message RequestList {
+  repeated ThreadPostRequestList list = 1;
+}
+
+message SignedInfoList {
+  repeated ThreadSignedInfoList list = 1;
+}

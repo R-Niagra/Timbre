@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package protobuf;
+
+
+message CurrentMiners{
+    repeated string MinerAddresses = 1;
+    uint32 numMiners =2;
+
+}

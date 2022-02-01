@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package protobuf;
+
+message PublicKey {
+  bytes v = 1;
+  bytes k = 2;
+  bytes u = 3;
+  repeated bytes ga_pow = 4;
+}
+
+message Chall {
+  bytes r = 1;
+  bytes rho = 2;
+  repeated int32 I = 3 [packed=true];
+}
+
+message Proof {
+  bytes psi = 1;
+  bytes y = 2;
+  bytes tag = 3;
+}
+
+message Tag {
+  repeated bytes tags = 1;
+}

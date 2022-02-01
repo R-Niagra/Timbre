@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package protobuf;
+
+// information about DPOS state
+// message DposState {
+//   bytes candidate_root_hash = 1;
+//   bytes committee_root_hash = 2;
+// }
+
+// Information about a candidate
+message Candidate {
+  string Address = 1;
+  string ID = 2;
+  int64 VotePower = 3;
+  int64 BannedTill = 4;
+  int64 TimeStamp = 5;
+}
+
+// Candidate registers for DPOS election
+// message Register {
+//   string url = 1;
+//   bytes collateral = 2;
+//   // Is the collateral chosen by candidate or system?
+//   bytes candidate_sig = 3;
+// }
+
+// User votes for list of candidates
+/*
+message Vote {
+  repeated bytes candidate_ids = 1;
+  bytes voter_sig = 2;
+}
+*/
+
+//User votes for a map of candidates
+message Vote {
+    // map<string,int64> VotedCand = 1;
+    string Id = 1;
+    repeated string VoteCand =2 ;
+    int64 TimeStamp = 3;
+    uint64 Nonce = 4;
+    bytes voter_sig = 5;
+}
+
+
+message VotePayload{
+  repeated string VoteCand =1;
+}
+
+message CommitteeState{
+  uint32 childCommitteeSize =1;
+  repeated Candidate candidatesState = 2;
+  uint64 totalVoteStaked = 3;
+}
+
+// message StringArray{
+//   repeated string StringArray =1;
+// }
+
+message RoundMinersEntry{
+  repeated string miners = 1;
+  int64 round = 2;
+  int64 slotsPassed = 3;
+}
+
+message DposSnapShot{
+  int64 roundNumber =1;
+  repeated Candidate nextRoundCom = 2;
+  repeated RoundMinersEntry MinersByRound =3;
+}

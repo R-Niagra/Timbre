@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package protobuf;
+
+import "deal.proto";
+import "transaction.proto";
+import "dpos.proto";
+import "wallet.proto";
+
+message BlockHeader {
+  int64 height = 1; // TODO: switch to uint32
+  int64 timestamp = 2;
+  bytes parent_hash = 3;
+  bytes miner_public_key = 4;
+  int64 roundNum = 5;
+  bytes hash = 6;
+  string chainId = 7;
+  bytes miner_sig = 8;
+}
+
+message BlockData {
+  repeated Deal deals = 1;
+  repeated Transaction transactions = 2;
+  repeated ChPrPair chPrPair = 3;
+  repeated Vote votes = 4;
+  repeated PoDF podfs = 5;
+
+}
+
+message AccState{
+  string pk = 1;
+  int64 balance = 2;
+  repeated string votes = 3;
+  bool isCandidate = 4;
+  repeated int64 podfHeights = 5;
+  uint64 nonce = 6;
+}
+
+message BlockState{
+  repeated AccState AccountStates = 1;
+  repeated string Miners = 2;
+  repeated string NextRoundMiners = 3;
+  int64 slotsPassed = 4;
+  int32 epoch = 5;
+}
+
+message Block {
+  BlockHeader header = 1;
+  BlockData data = 2;
+  BlockState state = 3;
+  
+}
+
+message PoDF{   //Proof of double forgery
+  BlockHeader Header1 = 1;
+  BlockHeader Header2 = 2;
+  int64   timeStamp = 3;
+  uint64 nonce = 4; // to prevent payment replay attack
+  bytes  public_key =5;
+  bytes signature = 6;
+}
+
+message PodfPayload{
+  BlockHeader Header1 = 1;
+  BlockHeader Header2 = 2;
+}
+
+message FullBlockState{
+  bytes hash =1;
+  int64 height =2;
+  WalletStates Wallets = 3;
+  DposSnapShot DposState = 4;
+}
+

@@ -1,0 +1,57 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+vendor/
+node_modules
+/.pnp
+.pnp.js
+
+*.prof
+*.log
+# VSCode folder
+.vscode
+
+# Compiled protobuf files
+*.pb.go
+
+# Database and text files
+*.db
+*.txt
+
+*.pdf
+# Mac specific
+*.DS_Store
+simulation/.DS_Store
+
+#Misc
+pbc-0.5.14/
+*.sum
+
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

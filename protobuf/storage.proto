@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package protobuf;
+
+message StorageOffer {
+  bytes spid = 1; // storage provider ID
+  bytes kadID = 2; // storage provider kadiD
+  uint32 min_price = 3; // minimum unit price (i.e. decibels per MB per block)
+  uint32 max_duration = 4; // maximum storage duration in minutes
+  uint32 size = 5; // size of storage left in MB
+}
+
+message SignedStorageOffer {
+  StorageOffer offer = 1;
+  bytes sig = 2;
+}
+
+message StoredPost {
+  bytes hash = 1; // hash of PostMetadata
+  bytes content = 2;
+  bytes thread_head_hash = 3;
+  bytes parent_hash = 4;
+  int64 timestamp = 5;
+  bytes pid = 6;
+  int64 likes = 7;
+}

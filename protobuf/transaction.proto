@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package protobuf;
+
+message Transaction {
+  message Body {
+    string sender_id = 1;
+    string recipient_id = 2;
+    int64 decibels = 3;
+    int64 timeStamp = 4;
+    uint64 nonce = 5; // to prevent payment replay attack
+    bytes payload = 6;
+  }
+  Body body = 1;
+  string type = 2;
+  bytes payer_sig = 3;
+}

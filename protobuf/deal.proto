@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package protobuf;
+
+import "post.proto";
+import "pos.proto";
+
+message Deal {
+  repeated SignedPostInfo list = 1; // list of SignedPostInfo for posts in the deal
+//  repeated PostMetadata list = 1; // list of post metaData for posts in the deal
+  bytes spid = 2; // storage provider ID
+  bytes sp_sig = 3; // storage provider signature
+  PublicKey public_key = 4; // public_key is for proof of storage
+  int64 timestamp = 5;
+  int64 expiryTime = 6;
+}
+
+message DealTagPair {
+  bytes DealHash = 1;
+  repeated bytes tags = 2;
+}
+
+message DealChallPair {
+  bytes dealHash = 1;
+  Chall challenge = 2;
+  int64 DealStartTime = 3;
+  int64 DealExpiryTime = 4;
+}
+
+message ChPrPair {
+  Chall challenge = 1;
+  Proof proof = 2;
+  bytes sig = 3;
+  bytes Spid = 4;
+  bytes Dealhash = 5;  
+  int64 DealExpiryTime = 6;
+  int64 timestamp = 7;
+  int64 DealStartTime = 8;
+}
+
+//message Activedeals{
+  //Deal deal = 1;
+  //uint32 weight = 2;
+//}
